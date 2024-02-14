@@ -1,0 +1,37 @@
+{
+  "name": "clbk",
+  "version": "1.0.0",
+  "description": "A tiny function wrapper to add callbacks.",
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.js",
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc ./src/index.ts --outDir ./dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wittrockscode/clbk.git"
+  },
+  "keywords": [
+    "clbk",
+    "callback",
+    "callbacks",
+    "ts",
+    "typescript",
+    "function"
+  ],
+  "author": "Leonard Wittrock",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wittrockscode/clbk/issues"
+  },
+  "homepage": "https://github.com/wittrockscode/clbk#readme",
+  "devDependencies": {
+    "rollup": "^4.10.0"
+  }
+}
