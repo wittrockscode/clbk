@@ -25,7 +25,7 @@ const handler = new CallbackHandler();
 const clbk = <T, V extends unknown[] = unknown[]>(
   name: string,
   func: (...args: V) => T,
-  passArgs = false,
+  passArgs = true,
 ) => {
   return function (...args: Parameters<typeof func>) {
     if (passArgs) handler.call(name, ...args);

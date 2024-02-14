@@ -1,6 +1,6 @@
 {
   "name": "clbk",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A tiny function wrapper to add callbacks.",
   "type": "module",
   "types": "./dist/index.d.ts",
