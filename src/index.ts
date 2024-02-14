@@ -1,14 +1,15 @@
 class CallbackHandler {
-  private callbacks: { [key: string]: Function } = {}
+  private callbacks: { [key: string]: Function[] } = {}
   addCallback (name: string, func: Function) {
-    if (this.callbacks[name]) throw new Error(`Callback with name ${name} already exists`);
-
-    this.callbacks[name] = func;
+    if (!this.callbacks[name])
+      this.callbacks[name] = [func];
+    else
+      this.callbacks[name]!.push(func);
   }
   call (name: string, ...args: any[]) {
     if (!this.callbacks[name]) throw new Error(`Callback with name ${name} does not exist`);
 
-    this.callbacks[name]!(...args);
+    this.callbacks[name]!.forEach((func) => func(...args));
   }
 }
 
