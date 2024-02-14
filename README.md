@@ -16,7 +16,7 @@ A function passed to `clbk` will trigger all callbacks listening for that name.
 ```js
 const foo = clbk("foo", (bar) => {
   console.log(`Hello from ${bar}!`);
-}, true);
+});
 ```
 
 ### Registering a callback
