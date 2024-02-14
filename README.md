@@ -34,7 +34,7 @@ on("foo", (bar) => {
 Call the `foo` function:
 
 ```js
-foo();
+foo("MyFunction");
 ```
 
 Excpected output:
