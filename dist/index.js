@@ -22,7 +22,7 @@ const handler = new CallbackHandler();
  * @param {boolean} passArgs - Whether to pass the function arguments to the callback.
  * @returns {Function} - The wrapped function.
  */
-const clbk = (name, func, passArgs = false) => {
+const clbk = (name, func, passArgs = true) => {
     return function (...args) {
         if (passArgs)
             handler.call(name, ...args);

@@ -11,7 +11,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc ./src/index.ts --outDir ./dist"
+    "build": "tsc",
+    "build:cjs": "npx rollup dist/index.js --file dist/index.cjs --format cjs"
   },
   "repository": {
     "type": "git",
