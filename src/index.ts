@@ -1,6 +1,13 @@
 class CallbackHandler {
   private callbacks: { [key: string]: Function[] } = {}
-  addCallback (name: string, func: Function) {
+  static _instance: CallbackHandler;
+  constructor () {
+    if (CallbackHandler._instance) {
+      return CallbackHandler._instance;
+    }
+    CallbackHandler._instance = this;
+  }
+  add (name: string, func: Function) {
     if (!this.callbacks[name])
       this.callbacks[name] = [func];
     else
@@ -22,25 +29,25 @@ const handler = new CallbackHandler();
  * @param {boolean} passArgs - Whether to pass the function arguments to the callback.
  * @returns {Function} - The wrapped function.
  */
-const clbk = <T, V extends unknown[] = unknown[]>(
+function bind <T, V extends unknown[] = unknown[]>(
   name: string,
   func: (...args: V) => T,
-  passArgs = true,
-) => {
+  passArgs: boolean = true,
+): Function {
   return function (...args: Parameters<typeof func>) {
     if (passArgs) handler.call(name, ...args);
     else handler.call(name);
     return func(...args);
   }
-};
+}
 
 /**
  * Is called when the callback function is triggered.
  * @param {string} name - The name of the callback.
  * @param {Function} func - The function to be executed.
  */
-const on = (name: string, func: Function) => {
-  handler.addCallback(name, func);
-};
+function on (name: string, func: Function) {
+  handler.add(name, func);
+}
 
-export { clbk, on };
+export { bind, on };

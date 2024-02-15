@@ -13,15 +13,15 @@ npm i clbk
 
 First, import the corresponding functions.
 ```js
-import { clbk, on } from "clbk";
+import { bind, on } from "clbk";
 ```
 
-### Provide a function to trigger callbacks
+### Bind a function to trigger callbacks
 
-A function passed to `clbk` will trigger all callbacks listening for that name.
+A function passed to `bind` will trigger all callbacks listening for that name.
 
 ```js
-const foo = clbk("foo", (bar) => {
+const foo = bind("foo", (bar) => {
   console.log(`Hello from ${bar}!`);
 });
 ```

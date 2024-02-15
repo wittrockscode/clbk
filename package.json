@@ -1,6 +1,6 @@
 {
   "name": "clbk",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A tiny function wrapper to add callbacks.",
   "type": "module",
   "types": "./dist/index.d.ts",
@@ -9,10 +9,15 @@
     "import": "./dist/index.js",
     "require": "./dist/index.cjs"
   },
+  "size-limit": [
+    {
+      "path": "dist/index.js"
+    }
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
-    "build:cjs": "npx rollup dist/index.js --file dist/index.cjs --format cjs"
+    "build": "tsc --declaration && tsc && npx rollup dist/index.js --file dist/index.cjs --format cjs",
+    "size": "size-limit"
   },
   "repository": {
     "type": "git",
@@ -33,6 +38,8 @@
   },
   "homepage": "https://github.com/wittrockscode/clbk#readme",
   "devDependencies": {
-    "rollup": "^4.10.0"
+    "@size-limit/preset-small-lib": "^11.0.2",
+    "rollup": "^4.10.0",
+    "size-limit": "^11.0.2"
   }
 }
