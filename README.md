@@ -22,7 +22,7 @@ A function passed to `bind` will trigger all callbacks listening for that name.
 
 ```js
 const foo = bind("foo", (bar) => {
-  console.log(`Hello from ${bar}!`);
+  console.log(`Hello from foo! Value: ${bar}`);
 });
 ```
 
@@ -32,7 +32,7 @@ Use the `on` function to register a callback.
 
 ```js
 on("foo", (bar) => {
-  console.log(`${bar} has been called!`)
+  console.log(`Foo has been called with value ${bar}!`)
 });
 ```
 
@@ -41,12 +41,12 @@ on("foo", (bar) => {
 Call the `foo` function:
 
 ```js
-foo("MyFunction");
+foo("MyValue");
 ```
 
 Excpected output:
 
 ```
-MyFunction has been called!
-Hello from MyFunction!
+Foo has been called with value MyValue!
+Hello from foo! Value: MyValue
 ```
