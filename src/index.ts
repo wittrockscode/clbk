@@ -33,7 +33,7 @@ function bind <T, V extends unknown[] = unknown[]>(
   name: string,
   func: (...args: V) => T,
   passArgs: boolean = true,
-): Function {
+) {
   return function (...args: Parameters<typeof func>) {
     if (passArgs) handler.call(name, ...args);
     else handler.call(name);

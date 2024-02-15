@@ -5,6 +5,7 @@ A tiny function wrapper to trigger callbacks.
 ## Installing
 
 Install via NPM:
+
 ```bash
 npm i clbk
 ```
@@ -12,6 +13,7 @@ npm i clbk
 ## Usage
 
 First, import the corresponding functions.
+
 ```js
 import { bind, on } from "clbk";
 ```
@@ -37,6 +39,7 @@ on("isNotEqual", function () {
 ```
 
 Since `arguments` is not defined in arrow functions, you have to specify them when using ES6 syntax:
+
 ```js
 on("isNotEqual", (arg1, arg2) =>  {
   console.log(`isNotEqual has been called with arguments: ${arg1} ${arg2}`);
@@ -56,4 +59,20 @@ Excpected output:
 ```
 isNotEqual has been called with arguments: 1,2
 Values are not equal!
+```
+
+## TypeScript support
+
+To ensure type safety when using TypeScript, the bind function accepts types:
+
+```js
+const isDifferent = bind<boolean, [number, number, boolean]>("test", (a: number, b: number, reverse: boolean) => {
+  return reverse ? a !== b : a === b;
+});
+```
+
+Which will produce the following type signature:
+
+```js
+const isDifferent: (args_0: number, args_1: number, args_2: boolean) => boolean
 ```

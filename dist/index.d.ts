@@ -5,7 +5,7 @@
  * @param {boolean} passArgs - Whether to pass the function arguments to the callback.
  * @returns {Function} - The wrapped function.
  */
-declare function bind<T, V extends unknown[] = unknown[]>(name: string, func: (...args: V) => T, passArgs?: boolean): Function;
+declare function bind<T, V extends unknown[] = unknown[]>(name: string, func: (...args: V) => T, passArgs?: boolean): (...args: Parameters<typeof func>) => T;
 /**
  * Is called when the callback function is triggered.
  * @param {string} name - The name of the callback.
