@@ -61,6 +61,23 @@ isNotEqual has been called with arguments: 1,2
 Values are not equal!
 ```
 
+## Instance Methods
+
+#### on(name, callback)
+
+Register a callback
+
+- `name` - the name of the event to listen for
+- `callback` - the callback function to execute when an event is recieved
+
+#### bind(name, function, [passArgs])
+
+Bind a function to trigger an event
+
+- `name` - the name of the event to trigger
+- `function` - the function that will trigger the event
+- `passArgs` - (optional) - wether to pass the function arguments to the event (default `true`)
+
 ## TypeScript support
 
 To ensure type safety when using TypeScript, the bind function accepts types:
