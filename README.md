@@ -2,6 +2,13 @@
 
 A tiny function wrapper to trigger callbacks.
 
+## Installing
+
+Install via NPM:
+```bash
+npm i clbk
+```
+
 ## Usage
 
 First, import the corresponding functions.
