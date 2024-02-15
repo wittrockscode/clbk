@@ -21,8 +21,8 @@ import { bind, on } from "clbk";
 A function passed to `bind` will trigger all callbacks listening for that name.
 
 ```js
-const foo = bind("foo", (bar) => {
-  console.log(`Hello from foo! Value: ${bar}`);
+const isNotEqual = bind("isNotEqual", (arg1, arg2) => {
+  if (arg1 !== arg2) console.log("Values are not equal!");	
 });
 ```
 
@@ -31,8 +31,15 @@ const foo = bind("foo", (bar) => {
 Use the `on` function to register a callback.
 
 ```js
-on("foo", (bar) => {
-  console.log(`Foo has been called with value ${bar}!`)
+on("isNotEqual", function () {
+  console.log(`isNotEqual has been called with arguments: ${Array.from(arguments)}`);
+});
+```
+
+Since `arguments` is not defined in arrow functions, you have to specify them when using ES6 syntax:
+```js
+on("isNotEqual", (arg1, arg2) =>  {
+  console.log(`isNotEqual has been called with arguments: ${arg1} ${arg2}`);
 });
 ```
 
@@ -41,12 +48,12 @@ on("foo", (bar) => {
 Call the `foo` function:
 
 ```js
-foo("MyValue");
+isNotEqual(1, 2);
 ```
 
 Excpected output:
 
 ```
-Foo has been called with value MyValue!
-Hello from foo! Value: MyValue
+isNotEqual has been called with arguments: 1,2
+Values are not equal!
 ```

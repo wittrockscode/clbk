@@ -1,10 +1,11 @@
 const { bind, on } = require("../dist/index.cjs");
 
-const a = bind("a", () => console.log("a func"));
-const b = bind("b", () => console.log("b func"));
+const isNotEqual = bind("isNotEqual", (arg1, arg2) => {
+  if (arg1 !== arg2) console.log("Values are not equal!");	
+});
 
-on("a", () => console.log("a callback"));
-on("b", () => console.log("b callback"));
+on("isNotEqual", function () {
+  console.log(`isNotEqual has been called with arguments: ${Array.from(arguments)}`);
+});
 
-a();
-b();
+isNotEqual(1, 2);
