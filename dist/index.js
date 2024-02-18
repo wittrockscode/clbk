@@ -14,7 +14,7 @@ class CallbackHandler {
     }
     call(name, ...args) {
         if (!this.callbacks[name])
-            throw new Error(`Callback with name ${name} does not exist`);
+            return;
         this.callbacks[name].forEach((func) => func(...args));
     }
 }
