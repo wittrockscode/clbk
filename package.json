@@ -1,6 +1,6 @@
 {
   "name": "clbk",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "A tiny function wrapper to add callbacks.",
   "type": "module",
   "types": "./dist/index.d.ts",
@@ -11,13 +11,16 @@
   },
   "size-limit": [
     {
-      "path": "dist/index.js"
+      "path": "dist/index.js",
+      "limit": "250 B"
     }
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc --declaration && tsc && npx rollup dist/index.js --file dist/index.cjs --format cjs",
-    "size": "size-limit"
+    "test": "vitest run",
+    "build": "tsc --declaration && npx rollup dist/index.js --file dist/index.cjs --format cjs",
+    "size": "size-limit",
+    "lint": "tsc --noEmit",
+    "ci": "npm run lint && npm run build && npm run test && npm run size"
   },
   "repository": {
     "type": "git",
@@ -41,5 +44,8 @@
     "@size-limit/preset-small-lib": "^11.0.2",
     "rollup": "^4.10.0",
     "size-limit": "^11.0.2"
+  },
+  "dependencies": {
+    "vitest": "^1.3.0"
   }
 }
